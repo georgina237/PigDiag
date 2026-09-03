@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto space-y-6">
+    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">🔍 Assistant de Diagnostic IA Hybride</h2>
+        
+        <form id="diag-form" class="space-y-4">
+            <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2">Décrivez les symptômes observés chez vos animaux :</label>
+                <textarea id="symptomes" rows="4" class="w-full p-4 border rounded-xl focus:ring-2 focus:ring-emerald-500" placeholder="Ex: Mes porcs ont de la fièvre, des taches rouges sur les oreilles et refusent de manger..."></textarea>
+            </div>
+            <button type="button" onclick="lancerDiagnostic()" class="w-full bg-emerald-600 text-white font-bold py-3 rounded-xl hover:bg-emerald-700 shadow">
+                Lancer l'Analyse IA
+            </button>
+        </form>
+
+        <!-- Zone de Résultat -->
+        <div id="resultat-box" class="mt-6 p-6 rounded-2xl border hidden space-y-3">
+            <div class="flex justify-between items-center">
+                <span id="diag-source" class="text-xs font-bold px-3 py-1 rounded-full bg-gray-200 text-gray-700"></span>
+                <span id="diag-gravite" class="text-xs font-bold px-3 py-1 rounded-full"></span>
+            </div>
+            <h3 id="diag-maladie" class="text-xl font-bold text-gray-800"></h3>
+            <p class="text-sm text-gray-600">Indice de confiance : <strong id="diag-confiance"></strong></p>
+            <div class="p-4 bg-gray-50 rounded-xl border border-gray-200">
+                <h4 class="text-xs font-bold text-gray-700 uppercase mb-1">Recommandation d'Urgence :</h4>
+                <p id="diag-reco" class="text-sm text-gray-700"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+async function lancerDiagnostic() {
+    const symptomes = document.getElementById('symptomes').value;
+    if(!symptomes) return alert("Veuillez décrire les symptômes.");
+
+    const res = await fetch('/api/diagnostiquer', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: 'symptomes=' + encodeURIComponent(symptomes)
+    });
+
+    const data = await res.json();
+    if(data.status === 'success') {
+        const box = document.getElementById('resultat-box');
+        box.classList.remove('hidden');
+        
+        document.getElementById('diag-source').innerText = "Source : " + data.source;
+        document.getElementById('diag-maladie').innerText = data.maladie;
+        document.getElementById('diag-confiance').innerText = data.confiance;
+        document.getElementById('diag-reco').innerText = data.recommandation;
+        
+        const graviteSpan = document.getElementById('diag-gravite');
+        graviteSpan.innerText = "Gravité : " + data.gravite;
+        
+        if(data.gravite === 'Critique') {
+            box.className = "mt-6 p-6 rounded-2xl border bg-red-50 border-red-200";
+            graviteSpan.className = "text-xs font-bold px-3 py-1 rounded-full bg-red-600 text-white";
+        } else {
+            box.className = "mt-6 p-6 rounded-2xl border bg-emerald-50 border-emerald-200";
+            graviteSpan.className = "text-xs font-bold px-3 py-1 rounded-full bg-emerald-600 text-white";
+        }
+    }
+}
+</script>
+{% endblock %}

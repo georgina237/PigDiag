@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="max-w-md mx-auto bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+    <h2 class="text-2xl font-bold text-gray-800 mb-2 text-center">Créer un compte PIGDIAG</h2>
+    <p class="text-xs text-gray-500 mb-6 text-center">Choisissez votre profil pour accéder à votre espace dédié.</p>
+
+    <form action="/register" method="POST" class="space-y-4">
+        <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-1">Nom complet</label>
+            <input type="text" name="nom" required class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none" placeholder="Ex: Dr. EBOKO ou Ferme Nkoumou">
+        </div>
+
+        <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-1">Adresse Email</label>
+            <input type="email" name="email" required class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none" placeholder="exemple@email.com">
+        </div>
+
+        <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-1">Rôle / Métier</label>
+            <select name="role" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+                <option value="eleveur">👨‍🌾 Éleveur Porcin</option>
+                <option value="veterinaire">👨‍⚕️ Vétérinaire</option>
+            </select>
+        </div>
+
+        <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-1">Mot de passe</label>
+            <input type="password" name="password" required class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+        </div>
+
+        <button type="submit" class="w-full bg-emerald-600 text-white font-bold py-3 rounded-xl shadow hover:bg-emerald-700 transition">
+            S'inscrire
+        </button>
+    </form>
+</div>
+{% endblock %}

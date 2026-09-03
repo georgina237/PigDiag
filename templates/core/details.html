@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto space-y-8">
+
+    <!-- En-tête -->
+    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center space-y-3">
+        <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+            Architecture & Spécifications
+        </span>
+        <h1 class="text-3xl font-extrabold text-gray-800">Détails Techniques de PIGDIAG</h1>
+        <p class="text-gray-600 text-sm max-w-2xl mx-auto">
+            Présentation détaillée des composants logiciels, du moteur de diagnostic IA et des fonctionnalités de l'application.
+        </p>
+    </div>
+
+    <!-- Moteur d'IA & Pathologies -->
+    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 space-y-6">
+        <h2 class="text-xl font-bold text-gray-800 border-b pb-3 flex items-center gap-2">
+            🧠 <span>1. Moteur de Diagnostic par IA</span>
+        </h2>
+        <p class="text-sm text-gray-600 leading-relaxed">
+            Le cœur de PIGDIAG repose sur un algorithme d'analyse décisionnelle et de traitement du signal/texte. Il évalue les symptômes saisis (boutons, taches cutanées, fièvre, mortalité subite) ainsi que les données multimédias pour classifier les pathologies selon un indice de confiance.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-4 text-sm">
+            <div class="border rounded-2xl p-4 bg-red-50 border-red-100 space-y-2">
+                <span class="text-xs font-bold text-red-700 uppercase">Pathologie Critique</span>
+                <h4 class="font-bold text-gray-800">Peste Porcine Africaine (PPA)</h4>
+                <p class="text-xs text-gray-600">Symptômes cibles : Fièvre très élevée, rougeurs/taches sur la peau, perte d'appétit, mortalité élevée.</p>
+            </div>
+            <div class="border rounded-2xl p-4 bg-orange-50 border-orange-100 space-y-2">
+                <span class="text-xs font-bold text-orange-700 uppercase">Pathologie Modérée</span>
+                <h4 class="font-bold text-gray-800">Rouget du Porc (Erysipèle)</h4>
+                <p class="text-xs text-gray-600">Symptômes cibles : Plaques rouges en forme de losanges sur la peau, boiterie, abattement.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stack Technique & Architecture -->
+    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 space-y-6">
+        <h2 class="text-xl font-bold text-gray-800 border-b pb-3 flex items-center gap-2">
+            💻 <span>2. Stack Technologique</span>
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-6 text-sm">
+            <div class="bg-gray-50 p-5 rounded-2xl border space-y-2">
+                <span class="text-2xl">🐍</span>
+                <h4 class="font-bold text-gray-800">Backend & API</h4>
+                <p class="text-xs text-gray-600"><strong>Python (Flask)</strong> pour la gestion des routes, du traitement logique et du moteur d'IA.</p>
+            </div>
+            <div class="bg-gray-50 p-5 rounded-2xl border space-y-2">
+                <span class="text-2xl">🗄️</span>
+                <h4 class="font-bold text-gray-800">Base de Données</h4>
+                <p class="text-xs text-gray-600"><strong>SQLite & SQLAlchemy (ORM)</strong> pour le stockage des comptes utilisateurs et l'historique des diagnostics.</p>
+            </div>
+            <div class="bg-gray-50 p-5 rounded-2xl border space-y-2">
+                <span class="text-2xl">🎨</span>
+                <h4 class="font-bold text-gray-800">Frontend & Carte</h4>
+                <p class="text-xs text-gray-600"><strong>Tailwind CSS</strong> pour le design et <strong>Leaflet.js / OpenStreetMap</strong> pour la géolocalisation GPS.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fonctionnalités Utilisateurs -->
+    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 space-y-4">
+        <h2 class="text-xl font-bold text-gray-800 border-b pb-3 flex items-center gap-2">
+            👥 <span>3. Profils Utilisateurs & Sécurité</span>
+        </h2>
+        <div class="grid md:grid-cols-2 gap-4 text-xs text-gray-600">
+            <div class="p-4 border rounded-xl bg-emerald-50/50 space-y-1">
+                <h4 class="font-bold text-emerald-800 text-sm">👨‍🌾 Espace Éleveur</h4>
+                <p>Soumission de diagnostics, accès à l'assistant virtuel PigBot, consultation de l'historique personnel et géolocalisation des vétérinaires.</p>
+            </div>
+            <div class="p-4 border rounded-xl bg-blue-50/50 space-y-1">
+                <h4 class="font-bold text-blue-800 text-sm">🩺 Espace Vétérinaire</h4>
+                <p>Référencement sur la carte GPS, réception d'alertes sanitaires et suivi des foyers épidémiologiques suspects.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

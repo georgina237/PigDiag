@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="space-y-12 max-w-6xl mx-auto">
+
+    <!-- Hero Section / Bannière d'accueil -->
+    <div class="bg-gradient-to-r from-emerald-800 to-emerald-600 text-white rounded-3xl p-8 md:p-12 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
+        <div class="space-y-4 max-w-2xl">
+            <span class="bg-emerald-900 text-emerald-200 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                Innovation Agrotech & IA
+            </span>
+            <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">
+                PIGDIAG : Diagnostic Intelligent de la Santé Porcine
+            </h1>
+            <p class="text-emerald-100 text-sm md:text-base leading-relaxed">
+                Assistance numérique basée sur l'Intelligence Artificielle et la Géolocalisation pour la détection précoce des maladies porcines et la mise en relation avec des vétérinaires.
+            </p>
+            <div class="pt-2 flex flex-wrap gap-4">
+                <a href="/diagnostic" class="bg-white text-emerald-800 font-bold px-6 py-3 rounded-xl shadow hover:bg-emerald-50 transition">
+                    🔍 Lancer un Diagnostic IA
+                </a>
+                <a href="/carte" class="bg-emerald-700 text-white border border-emerald-500 font-bold px-6 py-3 rounded-xl hover:bg-emerald-800 transition">
+                    📍 Vétérinaires à Proximité
+                </a>
+            </div>
+        </div>
+        <div class="text-8xl md:text-9xl select-none">
+            🐖🤖
+        </div>
+    </div>
+
+    <!-- Section : Fonctionnalités Clés -->
+    <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-3">
+            <div class="text-3xl">⚠️</div>
+            <h3 class="text-lg font-bold text-gray-800">Analyse des Symptômes</h3>
+            <p class="text-xs text-gray-600 leading-relaxed">
+                Saisissez les signes observés chez vos animaux (fièvre, taches rouges, perte d'appétit) ou téléchargez une photo/vidéo pour une analyse immédiate.
+            </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-3">
+            <div class="text-3xl">💡</div>
+            <h3 class="text-lg font-bold text-gray-800">Moteur de Pré-diagnostic IA</h3>
+            <p class="text-xs text-gray-600 leading-relaxed">
+                L'IA évalue les probabilités de pathologies (Pesta Porcine Africaine, Rouget, etc.) et vous indique les mesures d'urgence à prendre.
+            </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-3">
+            <div class="text-3xl">🩺</div>
+            <h3 class="text-lg font-bold text-gray-800">Géolocalisation Vétérinaire</h3>
+            <p class="text-xs text-gray-600 leading-relaxed">
+                Localisez rapidement les spécialistes de santé animale les plus proches sur la carte interactive pour une prise en charge rapide.
+            </p>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

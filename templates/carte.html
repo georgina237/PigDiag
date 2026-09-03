@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto space-y-6">
+
+    <!-- En-tête -->
+    <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div>
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                Réseau de Santé Animale
+            </span>
+            <h1 class="text-2xl md:text-3xl font-extrabold text-gray-800 mt-2">Carte des Vétérinaires à Proximité</h1>
+            <p class="text-gray-600 text-xs md:text-sm">Localisez et contactez directement les spécialistes vétérinaires agréés par appel ou WhatsApp.</p>
+        </div>
+        <button onclick="geolocaliser()" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-5 py-3 rounded-xl shadow transition flex items-center gap-2 text-xs md:text-sm">
+            🎯 Ma Position Actuelle
+        </button>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+        <!-- Carte Interactive OpenStreetMap / Leaflet -->
+        <div class="md:col-span-2 bg-white p-4 rounded-3xl shadow-sm border border-gray-100 h-[520px] relative z-10">
+            <div id="map" class="w-full h-full rounded-2xl"></div>
+        </div>
+
+        <!-- Liste des Vétérinaires Référencés -->
+        <div class="space-y-4 h-[520px] overflow-y-auto pr-1">
+            <h3 class="font-bold text-gray-800 text-sm px-1">Spécialistes Référencés (Cameroun)</h3>
+
+            <!-- Vétérinaire 1 : Dr. ETO Romain (Invité 1 - 672955553) -->
+            <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm space-y-2 hover:border-emerald-500 transition">
+                <div class="flex justify-between items-start">
+                    <h4 class="font-bold text-gray-800 text-sm">Dr. ETO Romain</h4>
+                    <span class="bg-emerald-50 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded-full border border-emerald-200">
+                        Disponible
+                    </span>
+                </div>
+                <p class="text-xs text-gray-500">Expert en Pathologies Porcines</p>
+                <p class="text-xs text-gray-600 font-medium">📍 Yaoundé, Cameroun</p>
+                <div class="pt-2 flex gap-2">
+                    <a href="tel:+237672955553" class="flex-1 bg-emerald-600 text-white text-center text-xs py-2 rounded-xl font-semibold hover:bg-emerald-700 flex items-center justify-center gap-1">
+                        📞 Appeler
+                    </a>
+                    <a href="https://wa.me/237672955553?text=Bonjour%20Dr.%20ETO%20Romain,%20j'utilise%20l'application%20intelligente%20d'aide%20au%20diagnostic%20porcin.%20Mes%20sujets%20présentent%20des%20symptômes%20suspects,%20j'aurais%20besoin%20d'une%20consultation." target="_blank" class="flex-1 bg-green-500 text-white text-center text-xs py-2 rounded-xl font-semibold hover:bg-green-600 flex items-center justify-center gap-1">
+                        💬 WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- Vétérinaire 2 : Clinique Vétérinaire de Nkomo (Invité 2 - 653541416) -->
+            <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm space-y-2 hover:border-emerald-500 transition">
+                <div class="flex justify-between items-start">
+                    <h4 class="font-bold text-gray-800 text-sm">Clinique Vétérinaire de Nkomo</h4>
+                    <span class="bg-emerald-50 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded-full border border-emerald-200">
+                        Garde 24h/7
+                    </span>
+                </div>
+                <p class="text-xs text-gray-500">Service d'Urgence Épidémiologique</p>
+                <p class="text-xs text-gray-600 font-medium">📍 Nkomo, Yaoundé</p>
+                <div class="pt-2 flex gap-2">
+                    <a href="tel:+237653541416" class="flex-1 bg-emerald-600 text-white text-center text-xs py-2 rounded-xl font-semibold hover:bg-emerald-700 flex items-center justify-center gap-1">
+                        📞 Appeler
+                    </a>
+                    <a href="https://wa.me/237653541416?text=URGENCE%20SANITAIRE%20:%20Bonjour%20Clinique%20de%20Nkomo,%20je%20signale%20un%20cas%20suspect%20de%20maladie%20contagieuse%20dans%20mon%20élevage." target="_blank" class="flex-1 bg-green-500 text-white text-center text-xs py-2 rounded-xl font-semibold hover:bg-green-600 flex items-center justify-center gap-1">
+                        💬 WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- Vétérinaire 3 : Dr. YOMI Marc (Invité 3 - 655340529) -->
+            <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm space-y-2 hover:border-emerald-500 transition">
+                <div class="flex justify-between items-start">
+                    <h4 class="font-bold text-gray-800 text-sm">Dr. YOMI Marc</h4>
+                    <span class="bg-emerald-50 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded-full border border-emerald-200">
+                        Sur Rendez-vous
+                    </span>
+                </div>
+                <p class="text-xs text-gray-500">Cabinet Agro-Pastoral Santé Animale</p>
+                <p class="text-xs text-gray-600 font-medium">📍 Omnisports, Yaoundé</p>
+                <div class="pt-2 flex gap-2">
+                    <a href="tel:+237655340529" class="flex-1 bg-emerald-600 text-white text-center text-xs py-2 rounded-xl font-semibold hover:bg-emerald-700 flex items-center justify-center gap-1">
+                        📞 Appeler
+                    </a>
+                    <a href="https://wa.me/237655340529?text=Bonjour%20Dr.%20YOMI,%20je%20souhaite%20planifier%20une%20visite%20de%20contrôle%20sanitaire%20dans%20mon%20exploitation%20porcine." target="_blank" class="flex-1 bg-green-500 text-white text-center text-xs py-2 rounded-xl font-semibold hover:bg-green-600 flex items-center justify-center gap-1">
+                        💬 WhatsApp
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Leaflet CSS & JS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+let map;
+let markerUtilisateur;
+
+const yaoundeLat = 3.8480;
+const yaoundeLng = 11.5021;
+
+function initMap() {
+    map = L.map('map').setView([yaoundeLat, yaoundeLng], 12);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    // Marqueurs géolocalisés des spécialistes à Yaoundé
+    L.marker([3.8600, 11.5100]).addTo(map)
+        .bindPopup("<b>Dr. ETO Romain</b><br>Expert Pathologies Porcines");
+
+    L.marker([3.8350, 11.5450]).addTo(map)
+        .bindPopup("<b>Clinique Vétérinaire de Nkomo</b><br>Urgence 24h/7");
+
+    L.marker([3.8800, 11.5300]).addTo(map)
+        .bindPopup("<b>Dr. YOMI Marc</b><br>Cabinet Santé Animale");
+
+    geolocaliser();
+}
+
+function geolocaliser() {
+    if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const lat = position.coords.latitude;
+                const lng = position.coords.longitude;
+
+                map.setView([lat, lng], 13);
+
+                if (markerUtilisateur) map.removeLayer(markerUtilisateur);
+
+                markerUtilisateur = L.circleMarker([lat, lng], {
+                    color: '#059669',
+                    fillColor: '#10B981',
+                    fillOpacity: 0.8,
+                    radius: 10
+                }).addTo(map);
+
+                markerUtilisateur.bindPopup("<b>📍 Position de votre Élevage</b>").openPopup();
+            },
+            () => {
+                console.log("Géolocalisation par défaut sur Yaoundé.");
+            }
+        );
+    }
+}
+
+window.onload = initMap;
+</script>
+{% endblock %}
